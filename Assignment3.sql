@@ -29,7 +29,7 @@
 -- 1) Show Records Of Students Whose Marks Are More Than 250
     SELECT * FROM STUDENT16 WHERE MARKS>250;
 
--- 2) Input Name, RollNo, Number, Marks And Caste From The User.
+-- 2) Input Name, RollNo, Marks And Caste From The User.
     INSERT INTO STUDENT16 VALUES(11,'&SNAME',&SROLLNO,NULL,&MARKS,'&GENDER');
 
 -- 3) UPDATE The ROLLNO With 45 Where SID Is 7;
