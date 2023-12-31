@@ -1,0 +1,10 @@
+SET SERVEROUTPUT ON
+DECLARE 
+    NUM1 NUMBER(2) := 6;
+    NUM2 NUMBER(2) := 6;
+    SUM1  NUMBER(4);
+BEGIN
+    SUM1:= NUM1 + NUM2;
+    DBMS_OUTPUT.PUT_LINE('Sum Of Two Number Is: ' || SUM1);
+END;
+/
