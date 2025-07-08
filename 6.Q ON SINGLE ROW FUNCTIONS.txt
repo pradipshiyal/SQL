@@ -1,0 +1,64 @@
+-- 1. List employees whose name has 4 characters
+SELECT ename FROM emp WHERE LENGTH(ename) = 4;
+
+-- 2. List employees whose job has 7 characters
+SELECT ename, job FROM emp WHERE LENGTH(job) = 7;
+
+-- 3. Find how many times letter 'S' occurs in 'qspiders'
+SELECT LENGTH('qspiders') - LENGTH(REPLACE('qspiders', 's', '')) AS count_s FROM dual;
+
+-- 4. Employees whose job ends with 'man'
+SELECT ename, job FROM emp WHERE LOWER(SUBSTR(job, -3)) = 'man';
+
+-- 5. Employees whose job starts with 'man'
+SELECT ename, job FROM emp WHERE LOWER(SUBSTR(job, 1, 3)) = 'man';
+
+-- 6. Names having exactly one 'L'
+SELECT ename FROM emp 
+WHERE LENGTH(ename) - LENGTH(REPLACE(UPPER(ename), 'L', '')) = 1;
+
+-- 7. Dept names containing letter 'O'
+SELECT dname FROM dept 
+WHERE INSTR(UPPER(dname), 'O') > 0;
+
+-- 8. Display: Scott working as a clerk earns 3000 in dept 20
+SELECT INITCAP(ename) || ' working as a ' || LOWER(job) || ' earns ' || sal || ' in dept ' || deptno AS info 
+FROM emp;
+
+-- 9. Count number of Ls in 'HELLLLL'
+SELECT LENGTH('HELLLLL') - LENGTH(REPLACE('HELLLLL', 'L', '')) AS count_l FROM dual;
+
+-- 10. Jobs containing 'MAN'
+SELECT ename, job FROM emp WHERE INSTR(UPPER(job), 'MAN') > 0;
+
+-- 11. Jobs starting with 'MAN'
+SELECT ename, job FROM emp WHERE UPPER(job) LIKE 'MAN%';
+
+-- 12. Jobs ending with 'MAN'
+SELECT ename, job FROM emp WHERE UPPER(job) LIKE '%MAN';
+
+-- 13. Convert: 'QSPIDERS' → 'qspIDERS'
+SELECT LOWER(SUBSTR(ename, 1, 3)) || UPPER(SUBSTR(ename, 4)) AS transformed_ename 
+FROM emp;
+
+-- 14. Display: SMITH is a CLERK and gets salary 2000
+SELECT ename || ' is a ' || job || ' and gets salary ' || sal AS result 
+FROM emp;
+
+-- 15. Employees hired on a Wednesday
+SELECT ename, hiredate 
+FROM emp 
+WHERE TO_CHAR(hiredate, 'DAY') LIKE 'WED%';
+
+-- 16. Employees hired in a leap year
+SELECT ename, hiredate 
+FROM emp 
+WHERE MOD(TO_NUMBER(TO_CHAR(hiredate, 'YYYY')), 4) = 0 
+  AND (MOD(TO_NUMBER(TO_CHAR(hiredate, 'YYYY')), 100) != 0 
+       OR MOD(TO_NUMBER(TO_CHAR(hiredate, 'YYYY')), 400) = 0);
+
+-- 17. Employees hired on Sunday in May
+SELECT ename, hiredate 
+FROM emp 
+WHERE TO_CHAR(hiredate, 'DY') = 'SUN' 
+  AND TO_CHAR(hiredate, 'MM') = '05';
